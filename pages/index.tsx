@@ -142,30 +142,36 @@ export default function Home() {
               <Image src={SearchIcon} alt="Search" width={22} height={22} />
             </button>
           </form>
-          {autocompleteData.length > 0 && typedCity.length > 0 && (
-            <div className={styles.autocomplete}>
-              {autocompleteData.map((item) => (
-                <div
-                  onClick={() => {
-                    setCity(item.name);
-                    setTypedCity("");
-                  }}
-                >
-                  {item.name}
-                </div>
-              ))}
-            </div>
-          )}
         </div>
         <div>
-          <button onClick={handleToggleUnit} className={styles.toggle}>
-            {isFahrenheit ? "°F" : "°C"}
-          </button>
+          {isFahrenheit ? (
+            <button onClick={handleToggleUnit} className={styles.toggleF}>
+              °F
+            </button>
+          ) : (
+            <button onClick={handleToggleUnit} className={styles.toggleC}>
+              °C
+            </button>
+          )}
         </div>
       </div>
 
       {/* Main body */}
       <div className={styles.mainPage}>
+        {autocompleteData.length > 0 && typedCity.length > 0 && (
+          <div className={styles.autocomplete}>
+            {autocompleteData.map((item) => (
+              <div
+                onClick={() => {
+                  setCity(item.name);
+                  setTypedCity("");
+                }}
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+        )}
         {weatherData.location.name ? (
           <div>
             <div className={styles.topRow}>
@@ -337,26 +343,57 @@ export default function Home() {
 
                       <div className={styles.forecastDayTemp}>
                         {isFahrenheit ? (
-                          <h1 className={styles.forecastDayTempMax}>
-                            {day.day.maxtemp_f}°F
+                          <h1 className={styles.windTitle}>
+                            Max: {day.day.maxtemp_f}°F
                           </h1>
                         ) : (
-                          <h1 className={styles.forecastDayTempMax}>
-                            {day.day.maxtemp_c}°C
+                          <h1 className={styles.windTitle}>
+                            Max: {day.day.maxtemp_c}°C
                           </h1>
                         )}
                         {isFahrenheit ? (
-                          <h1 className={styles.forecastDayTempMin}>
-                            {day.day.mintemp_f}°F
+                          <h1 className={styles.windTitle}>
+                            Min: {day.day.mintemp_f}°F
                           </h1>
                         ) : (
-                          <h1 className={styles.forecastDayTempMin}>
-                            {day.day.mintemp_c}°C
+                          <h1 className={styles.windTitle}>
+                            Min: {day.day.mintemp_c}°C
                           </h1>
                         )}
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+              <div className={styles.airQualityCard}>
+                <h1 className={styles.airQualityTitle}>Air Quality</h1>
+                <div className={styles.airQuality}>
+                  <div className={styles.airQualityRow}>
+                    <h1 className={styles.AQI_Option}>
+                      PM10:  {weatherData.current.air_quality.pm10.toFixed(0)}
+                    </h1>
+                    <h1 className={styles.AQI_Option}>
+                      PM2.5:  {weatherData.current.air_quality.pm2_5.toFixed(0)}
+                    </h1>
+                  </div>
+                  <hr className={styles.hrulecurrent} />
+                  <div className={styles.airQualityRow}>
+                    <h1 className={styles.AQI_Option}>
+                      NO2:  {weatherData.current.air_quality.no2.toFixed(0)}
+                    </h1>
+                    <h1 className={styles.AQI_Option}>
+                      SO2:  {weatherData.current.air_quality.so2.toFixed(0)}
+                    </h1>
+                  </div>
+                  <hr className={styles.hrulecurrent} />
+                  <div className={styles.airQualityRow}>
+                    <h1 className={styles.AQI_Option}>
+                      O3:  {weatherData.current.air_quality.o3.toFixed(0)}
+                    </h1>
+                    <h1 className={styles.AQI_Option}>
+                      CO:  {weatherData.current.air_quality.co.toFixed(0)}
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
