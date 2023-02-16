@@ -1,0 +1,51 @@
+{
+    "location": {
+        "name": "",
+        "region": "",
+        "country": "",
+        "lat": 0,
+        "lon": 0,
+        "tz_id": "",
+        "localtime_epoch": 0,
+        "localtime": ""
+    },
+    "current": {
+        "last_updated_epoch": 0,
+        "last_updated": "",
+        "temp_c": 0,
+        "temp_f": 0,
+        "is_day": 0,
+        "condition": {
+            "text": "",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+            "code": 0
+        },
+        "wind_mph": 0,
+        "wind_kph": 0,
+        "wind_degree": 0,
+        "wind_dir": "",
+        "pressure_mb": 0,
+        "pressure_in": 0,
+        "precip_mm": 0,
+        "precip_in": 0,
+        "humidity": 0,
+        "cloud": 0,
+        "feelslike_c": 0,
+        "feelslike_f": 0,
+        "vis_km": 0,
+        "vis_miles": 0,
+        "uv": 0,
+        "gust_mph": 0,
+        "gust_kph": 0,
+        "air_quality": {
+            "co": 1735.699951171875,
+            "no2": 27.399999618530273,
+            "o3": 115.9000015258789,
+            "so2": 28.399999618530273,
+            "pm2_5": 287.1000061035156,
+            "pm10": 344.20001220703125,
+            "us-epa-index": 6,
+            "gb-defra-index": 10
+        }
+    }
+}
