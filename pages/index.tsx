@@ -36,6 +36,19 @@ export default function Home() {
   ]);
 
   useEffect(() => {
+    const fetchLocationData = async () => {
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        setCity(data.city);
+      } catch (error) {
+        console.error('Error fetching location data:', error);
+      }
+    };
+    fetchLocationData();
+  }, []);
+
+  useEffect(() => {
     const fetchAutocompleteData = async () => {
       if (typedCity) {
         console.log(
