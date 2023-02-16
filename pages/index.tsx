@@ -52,10 +52,10 @@ export default function Home() {
     const fetchAutocompleteData = async () => {
       if (typedCity) {
         console.log(
-          `http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
+          `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
         );
         const res = await fetch(
-          `http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
+          `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
         );
         const data = await res.json();
         console.log(data);
@@ -70,10 +70,10 @@ export default function Home() {
     const fetchWeatherData = async () => {
       if (city) {
         console.log(
-          `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
+          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
         );
         const res = await fetch(
-          `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
+          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
         );
         const data = await res.json();
         setWeatherData(data);
@@ -86,10 +86,10 @@ export default function Home() {
     const fetchForecastData = async () => {
       if (city) {
         console.log(
-          `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
         );
         const res = await fetch(
-          `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
         );
         const data = await res.json();
         setForecastData(data);
