@@ -51,14 +51,10 @@ export default function Home() {
   useEffect(() => {
     const fetchAutocompleteData = async () => {
       if (typedCity) {
-        console.log(
-          `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
-        );
         const res = await fetch(
           `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${typedCity}`
         );
         const data = await res.json();
-        console.log(data);
         setAutocompleteData(data);
       }
     };
@@ -69,9 +65,6 @@ export default function Home() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       if (city) {
-        console.log(
-          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
-        );
         const res = await fetch(
           `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
         );
@@ -85,9 +78,6 @@ export default function Home() {
   useEffect(() => {
     const fetchForecastData = async () => {
       if (city) {
-        console.log(
-          `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
-        );
         const res = await fetch(
           `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`
         );
@@ -97,11 +87,6 @@ export default function Home() {
     };
     fetchForecastData();
   }, [city]);
-
-  useEffect(() => {
-    console.log(city);
-    console.log(weatherData);
-  }, [weatherData]);
 
   // Update users' city from the search input
   const handleSearch = (e: any) => {
@@ -185,7 +170,7 @@ export default function Home() {
             ))}
           </div>
         )}
-        {weatherData.location.name ? (
+        {autocompleteData.length > 0 && weatherData.location?.name ? (
           <div>
             <div className={styles.topRow}>
               <div className={styles.currentCard}>
@@ -263,10 +248,10 @@ export default function Home() {
 
                     <div className={styles.sunrise_and_sunset}>
                       <h1 className={styles.windSpeedUnit}>
-                        {forecastData.forecast.forecastday[0].astro.sunrise}
+                        {forecastData.forecast?.forecastday[0].astro.sunrise}
                       </h1>
                       <h1 className={styles.windSpeedUnit}>
-                        {forecastData.forecast.forecastday[0].astro.sunset}
+                        {forecastData.forecast?.forecastday[0].astro.sunset}
                       </h1>
                     </div>
                   </div>
@@ -334,7 +319,7 @@ export default function Home() {
               <div className={styles.forecastCard}>
                 <h1 className={styles.forecastTitle}>Forecast</h1>
                 <div className={styles.forecast}>
-                  {forecastData.forecast.forecastday.map((day: any) => (
+                  {forecastData.forecast?.forecastday.map((day: any) => (
                     <div className={styles.forecastDay}>
                       <div className={styles.forecastDayIcon}>
                         <Image
@@ -413,7 +398,7 @@ export default function Home() {
           </div>
         ) : (
           <div className={styles.entercity}>
-            <h1>Please enter a city name!</h1>
+            <h1>Please enter a valid city name!</h1>
           </div>
         )}
       </div>
