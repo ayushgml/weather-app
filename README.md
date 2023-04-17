@@ -1,8 +1,8 @@
 ## How to run:
 
 ```
-git clone https://github.com/ayushgml/nextjs-task.git
-cd nextjs-task
+git clone https://github.com/ayushgml/weather-app.git
+cd weather-app
 npm i
 npm run dev
 ```
